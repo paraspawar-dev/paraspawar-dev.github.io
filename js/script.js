@@ -1,6 +1,4 @@
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize variables
     const navbar = document.querySelector('.navbar');
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -12,14 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const progressBars = document.querySelectorAll('.progress-bar');
     const animateElements = document.querySelectorAll('.animate-on-scroll');
 
-    // Toggle mobile menu
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             document.body.classList.toggle('no-scroll');
             this.classList.toggle('active');
 
-            // Transform hamburger to X
             const hamburger = this.querySelector('.hamburger');
             if (hamburger.classList.contains('active')) {
                 hamburger.classList.remove('active');
@@ -29,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close mobile menu when clicking on a nav link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
@@ -39,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Change navbar style on scroll
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -47,18 +41,15 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.classList.remove('scrolled');
         }
 
-        // Show/hide back to top button
         if (window.scrollY > 500) {
             backToTopButton.classList.add('active');
         } else {
             backToTopButton.classList.remove('active');
         }
 
-        // Animate elements on scroll
         animateOnScroll();
     });
 
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             if (this.getAttribute('href') !== '#') {
@@ -75,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Active link on scroll
     window.addEventListener('scroll', function() {
         let current = '';
         const sections = document.querySelectorAll('section');
@@ -96,13 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Project filtering
     if (filterButtons.length > 0) {
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
-                // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
                 this.classList.add('active');
                 
                 const filterValue = this.getAttribute('data-filter');
@@ -116,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         card.style.display = 'none';
                     }
                     
-                    // Add animation
                     setTimeout(() => {
                         card.classList.add('show');
                     }, 100);
@@ -125,16 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize EmailJS
-    // To set up EmailJS:
-    // 1. Create an account at https://www.emailjs.com/
-    // 2. Create a new Email Service (e.g., Gmail, Outlook) and note the service ID
-    // 3. Create an Email Template with template variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
-    // 4. Get your User ID (public key) from Account > API Keys
-    // 5. Replace 'YOUR_PUBLIC_KEY' below with your actual EmailJS User ID
-    // 6. Replace 'default_service' and 'template_id' in the emailjs.send() function with your actual service and template IDs
-    
-    // Dynamically load EmailJS if not already loaded
     function loadEmailJSScript() {
         return new Promise((resolve, reject) => {
             if (typeof emailjs !== 'undefined') {
@@ -158,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initialize EmailJS
     let emailJSInitialized = false;
     
     function initializeEmailJS() {
@@ -185,45 +160,37 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // Initialize when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
         initializeEmailJS();
     });
 
-    // Contact form submission
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+            const name = document.getElementById('user_name').value;
+            const email = document.getElementById('user_email').value;
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            // Basic validation
             if (name && email && subject && message) {
-                // Show loading state
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalBtnText = submitBtn.textContent;
                 submitBtn.classList.add('sending');
                 submitBtn.disabled = true;
                 
-                // Prepare template parameters
                 const templateParams = {
-                    from_name: name,
-                    from_email: email,
+                    user_name: name,
+                    user_email: email,
                     subject: subject,
                     message: message,
                     to_email: 'paraspawar.dev@outlook.com'
                 };
                 
-                // Send email using EmailJS
                 console.log('Attempting to send email with params:', templateParams);
                 console.log('Using service_id:', 'service_42d4u9c');
                 console.log('Using template_id:', 'template_ccklg0u');
                 
-                // Ensure EmailJS is initialized before sending
                 const sendEmail = () => {
                     try {
                         console.log('About to call emailjs.send with:', {
@@ -237,14 +204,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                 console.log('Email sent successfully:', response);
                                 alert('Thank you for your message! I will get back to you soon.');
                                 contactForm.reset();
-                                // Reset button
                                 submitBtn.classList.remove('sending');
                                 submitBtn.disabled = false;
                             })
                             .catch(function(error) {
                                 console.error('Email sending failed:', error);
                                 alert('Sorry, there was an error sending your message. Please try again later. Error: ' + (error.text || 'Unknown error'));
-                                // Reset button
                                 submitBtn.classList.remove('sending');
                                 submitBtn.disabled = false;
                             });
@@ -256,10 +221,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 };
                 
-                // Check if EmailJS is available and initialized
                 if (typeof emailjs === 'undefined' || !emailJSInitialized) {
                     console.log('EmailJS not initialized yet, attempting to initialize...');
-                    // Try to initialize
                     initializeEmailJS()
                         .then(success => {
                             if (success) {
@@ -279,7 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             submitBtn.disabled = false;
                         });
                 } else {
-                    // EmailJS is already initialized, send the email
                     console.log('EmailJS already initialized, sending email directly');
                     sendEmail();
                 }
@@ -289,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animate skill progress bars
     function animateProgressBars() {
         progressBars.forEach(bar => {
             const width = bar.getAttribute('data-width');
@@ -297,66 +258,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animate elements on scroll with optimization
-function animateOnScroll() {
-    // Use requestAnimationFrame for smoother animations
-    requestAnimationFrame(() => {
-        animateElements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementPosition < windowHeight - 50) {
-                element.classList.add('show');
-            }
+    function animateOnScroll() {
+        requestAnimationFrame(() => {
+            animateElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 50) {
+                    element.classList.add('show');
+                }
+            });
         });
+    }
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            animateProgressBars();
+            animateOnScroll();
+        }, 300);
     });
-}
 
-    // Initialize animations with better performance
-window.addEventListener('load', () => {
-    // Small delay to ensure DOM is fully rendered
-    setTimeout(() => {
-        animateProgressBars();
-        animateOnScroll();
-    }, 300);
-});
-
-// Add debounce function for scroll performance
-function debounce(func, wait = 10, immediate = true) {
-    let timeout;
-    return function() {
-        const context = this, args = arguments;
-        const later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
+    function debounce(func, wait = 10, immediate = true) {
+        let timeout;
+        return function() {
+            const context = this, args = arguments;
+            const later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
         };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
     };
-};
 
-// Use debounced scroll event for better performance
-window.addEventListener('scroll', debounce(function() {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+    window.addEventListener('scroll', debounce(function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
 
-    // Show/hide back to top button
-    if (window.scrollY > 500) {
-        backToTopButton.classList.add('active');
-    } else {
-        backToTopButton.classList.remove('active');
-    }
+        if (window.scrollY > 500) {
+            backToTopButton.classList.add('active');
+        } else {
+            backToTopButton.classList.remove('active');
+        }
 
-    // Animate elements on scroll
-    animateOnScroll();
-}));
+        animateOnScroll();
+    }));
 
-    // Typing effect for hero section
     const typingElement = document.querySelector('.hero-content h1 span');
     if (typingElement) {
         const text = typingElement.textContent;
