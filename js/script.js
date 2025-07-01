@@ -168,8 +168,8 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const name = document.getElementById('user_name').value;
-            const email = document.getElementById('user_email').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
@@ -180,10 +180,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.disabled = true;
                 
                 const templateParams = {
-                    user_name: name,
-                    user_email: email,
-                    subject: subject,
+                    name: name,
+                    email: email,
                     message: message,
+                    subject: subject,
                     to_email: 'paraspawar.dev@outlook.com'
                 };
                 
