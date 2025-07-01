@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <!-- Background -->
+  <rect width="500" height="500" fill="#f8f9fa" />
+  
+  <!-- Task Management App Illustration -->
+  <g transform="translate(50, 50)">
+    <!-- App Window -->
+    <rect x="0" y="0" width="400" height="300" rx="10" ry="10" fill="white" stroke="#dee2e6" stroke-width="2" />
+    
+    <!-- App Header -->
+    <rect x="0" y="0" width="400" height="40" rx="10" ry="10" fill="#4a63e7" />
+    <text x="20" y="25" font-family="Arial" font-size="16" font-weight="bold" fill="white">Task Management App</text>
+    <circle cx="370" cy="20" r="8" fill="white" opacity="0.8" />
+    <circle cx="345" cy="20" r="8" fill="white" opacity="0.8" />
+    
+    <!-- Sidebar -->
+    <rect x="0" y="40" width="100" height="260" fill="#f1f3f5" />
+    
+    <!-- Sidebar Menu Items -->
+    <rect x="15" y="60" width="70" height="25" rx="5" ry="5" fill="#4a63e7" opacity="0.8" />
+    <text x="25" y="77" font-family="Arial" font-size="12" fill="white">Dashboard</text>
+    
+    <rect x="15" y="95" width="70" height="25" rx="5" ry="5" fill="#e9ecef" />
+    <text x="25" y="112" font-family="Arial" font-size="12" fill="#495057">Projects</text>
+    
+    <rect x="15" y="130" width="70" height="25" rx="5" ry="5" fill="#e9ecef" />
+    <text x="25" y="147" font-family="Arial" font-size="12" fill="#495057">Calendar</text>
+    
+    <rect x="15" y="165" width="70" height="25" rx="5" ry="5" fill="#e9ecef" />
+    <text x="25" y="182" font-family="Arial" font-size="12" fill="#495057">Reports</text>
+    
+    <rect x="15" y="200" width="70" height="25" rx="5" ry="5" fill="#e9ecef" />
+    <text x="25" y="217" font-family="Arial" font-size="12" fill="#495057">Settings</text>
+    
+    <!-- Task Columns -->
+    <!-- To Do Column -->
+    <rect x="110" y="50" width="90" height="280" rx="5" ry="5" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" />
+    <rect x="110" y="50" width="90" height="30" rx="5" ry="5" fill="#e9ecef" />
+    <text x="125" y="70" font-family="Arial" font-size="12" font-weight="bold" fill="#495057">To Do</text>
+    <text x="180" y="70" font-family="Arial" font-size="12" fill="#6c757d">4</text>
+    
+    <!-- Task Cards in To Do -->
+    <rect x="115" y="90" width="80" height="60" rx="5" ry="5" fill="white" stroke="#dee2e6" stroke-width="1" />
+    <rect x="120" y="95" width="50" height="10" rx="2" ry="2" fill="#4a63e7" opacity="0.2" />
+    <rect x="120" y="110" width="70" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="120" y="123" width="60" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="120" y="136" width="30" height="8" rx="4" ry="4" fill="#4a63e7" opacity="0.5" />
+    
+    <rect x="115" y="160" width="80" height="60" rx="5" ry="5" fill="white" stroke="#dee2e6" stroke-width="1" />
+    <rect x="120" y="165" width="50" height="10" rx="2" ry="2" fill="#4a63e7" opacity="0.2" />
+    <rect x="120" y="180" width="70" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="120" y="193" width="60" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="120" y="206" width="30" height="8" rx="4" ry="4" fill="#4a63e7" opacity="0.5" />
+    
+    <!-- In Progress Column -->
+    <rect x="210" y="50" width="90" height="280" rx="5" ry="5" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" />
+    <rect x="210" y="50" width="90" height="30" rx="5" ry="5" fill="#e9ecef" />
+    <text x="225" y="70" font-family="Arial" font-size="12" font-weight="bold" fill="#495057">In Progress</text>
+    <text x="280" y="70" font-family="Arial" font-size="12" fill="#6c757d">3</text>
+    
+    <!-- Task Cards in In Progress -->
+    <rect x="215" y="90" width="80" height="60" rx="5" ry="5" fill="white" stroke="#dee2e6" stroke-width="1" />
+    <rect x="220" y="95" width="50" height="10" rx="2" ry="2" fill="#fd7e14" opacity="0.2" />
+    <rect x="220" y="110" width="70" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="220" y="123" width="60" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="220" y="136" width="30" height="8" rx="4" ry="4" fill="#fd7e14" opacity="0.5" />
+    
+    <rect x="215" y="160" width="80" height="60" rx="5" ry="5" fill="white" stroke="#dee2e6" stroke-width="1" />
+    <rect x="220" y="165" width="50" height="10" rx="2" ry="2" fill="#fd7e14" opacity="0.2" />
+    <rect x="220" y="180" width="70" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="220" y="193" width="60" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="220" y="206" width="30" height="8" rx="4" ry="4" fill="#fd7e14" opacity="0.5" />
+    
+    <!-- Done Column -->
+    <rect x="310" y="50" width="90" height="280" rx="5" ry="5" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" />
+    <rect x="310" y="50" width="90" height="30" rx="5" ry="5" fill="#e9ecef" />
+    <text x="325" y="70" font-family="Arial" font-size="12" font-weight="bold" fill="#495057">Done</text>
+    <text x="380" y="70" font-family="Arial" font-size="12" fill="#6c757d">5</text>
+    
+    <!-- Task Cards in Done -->
+    <rect x="315" y="90" width="80" height="60" rx="5" ry="5" fill="white" stroke="#dee2e6" stroke-width="1" />
+    <rect x="320" y="95" width="50" height="10" rx="2" ry="2" fill="#40c057" opacity="0.2" />
+    <rect x="320" y="110" width="70" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="320" y="123" width="60" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="320" y="136" width="30" height="8" rx="4" ry="4" fill="#40c057" opacity="0.5" />
+    
+    <rect x="315" y="160" width="80" height="60" rx="5" ry="5" fill="white" stroke="#dee2e6" stroke-width="1" />
+    <rect x="320" y="165" width="50" height="10" rx="2" ry="2" fill="#40c057" opacity="0.2" />
+    <rect x="320" y="180" width="70" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="320" y="193" width="60" height="8" rx="2" ry="2" fill="#adb5bd" />
+    <rect x="320" y="206" width="30" height="8" rx="4" ry="4" fill="#40c057" opacity="0.5" />
+  </g>
+  
+  <!-- Drag and Drop Indicator -->
+  <g transform="translate(250, 350)">
+    <path d="M-20,-10 L0,10 L20,-10" fill="none" stroke="#4a63e7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M-20,20 L0,40 L20,20" fill="none" stroke="#4a63e7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  
+  <!-- Tech Stack Labels -->
+  <g transform="translate(50, 380)">
+    <rect x="0" y="0" width="80" height="25" rx="12.5" ry="12.5" fill="#4a63e7" opacity="0.8" />
+    <text x="40" y="16" font-family="Arial" font-size="12" fill="white" text-anchor="middle">React</text>
+  </g>
+  
+  <g transform="translate(140, 380)">
+    <rect x="0" y="0" width="80" height="25" rx="12.5" ry="12.5" fill="#4a63e7" opacity="0.8" />
+    <text x="40" y="16" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Redux</text>
+  </g>
+  
+  <g transform="translate(230, 380)">
+    <rect x="0" y="0" width="120" height="25" rx="12.5" ry="12.5" fill="#4a63e7" opacity="0.8" />
+    <text x="60" y="16" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Drag and Drop</text>
+  </g>
+  
+  <g transform="translate(360, 380)">
+    <rect x="0" y="0" width="80" height="25" rx="12.5" ry="12.5" fill="#4a63e7" opacity="0.8" />
+    <text x="40" y="16" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Firebase</text>
+  </g>
+  
+  <!-- Project Title -->
+  <g transform="translate(250, 440)">
+    <text x="0" y="0" font-family="Arial" font-size="24" font-weight="bold" fill="#212529" text-anchor="middle">Task Management App</text>
+  </g>
+</svg>
