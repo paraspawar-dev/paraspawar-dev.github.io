@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(() => {
                 if (typeof emailjs !== 'undefined') {
                     try {
-                        emailjs.init("jJtoK6l1z8ZcxHO42");
+                        emailjs.init("H7sGal-pxNT9TGaXT");
                         console.log('EmailJS initialized successfully');
                         emailJSInitialized = true;
                         return true;
@@ -220,19 +220,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Send email using EmailJS
                 console.log('Attempting to send email with params:', templateParams);
-                console.log('Using service_id:', 'service_zxrl8a7');
-                console.log('Using template_id:', 'template_ofsnywl');
+                console.log('Using service_id:', 'service_42d4u9c');
+                console.log('Using template_id:', 'template_ccklg0u');
                 
                 // Ensure EmailJS is initialized before sending
                 const sendEmail = () => {
                     try {
                         console.log('About to call emailjs.send with:', {
-                            service_id: 'service_zxrl8a7',
-                            template_id: 'template_ofsnywl',
+                            service_id: 'service_42d4u9c',
+                            template_id: 'template_ccklg0u',
                             template_params: templateParams
                         });
                         
-                        emailjs.send('service_zxrl8a7', 'template_ofsnywl', templateParams)
+                        emailjs.send('service_42d4u9c', 'template_ccklg0u', templateParams)
                             .then(function(response) {
                                 console.log('Email sent successfully:', response);
                                 alert('Thank you for your message! I will get back to you soon.');

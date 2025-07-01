@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Paras Pawar's portfolio. Web developer and designer creating beautiful, functional, and responsive websites.">
+    <link rel="icon" href="img/profile.svg" type="image/svg+xml">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Paras Pawar - Portfolio">
+    <meta property="og:description" content="Web developer and designer creating beautiful, functional, and responsive websites.">
+    <meta property="og:image" content="https://yourdomain.com/img/Profile.jpeg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
     
     <!-- EmailJS will be loaded dynamically by script.js -->
 </head>
@@ -42,15 +50,15 @@
                     <a href="#contact" class="btn btn-secondary">Contact Me</a>
                 </div>
                 <div class="social-icons animate-on-scroll">
-                    <a href="https://github.com/paraspawar-dev" class="social-icon"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/code.with.paras?igsh=MWNzcjFndm91YWJqNw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/paraspawar-dev" class="social-icon" aria-label="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon" aria-label="Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/code.with.paras?igsh=MWNzcjFndm91YWJqNw==" class="social-icon" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="hero-image animate-on-scroll">
                 <div class="shape"></div>
-                <img src="./img/Profile.jpeg" alt="Profile Image">
+                <img src="./img/Profile.jpeg" alt="Profile Image" loading="lazy">
             </div>
         </div>
         <div class="scroll-down">
@@ -67,7 +75,7 @@
             </div>
             <div class="about-content">
                 <div class="about-image animate-on-scroll">
-                    <img src="./img/lan.jpeg" alt="About Me">
+                    <img src="./img/lan.jpeg" alt="About Me" loading="lazy">
                 </div>
                 <div class="about-text animate-on-scroll">
                     <h3>Who am I?</h3>
@@ -395,6 +403,6 @@
     </script>
     
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>

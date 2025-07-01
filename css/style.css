@@ -62,7 +62,7 @@ ul {
     list-style: none;
 }
 
-img {
+img, video {
     max-width: 100%;
     height: auto;
     display: block;
@@ -1070,5 +1070,35 @@ img {
     
     .contact-form {
         padding: 20px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content h2 {
+        font-size: 1.2rem;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .about-details, .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .container, .about-content, .contact-content, .footer-content {
+        padding: 0 10px;
+        flex-direction: column !important;
+        gap: 10px;
+    }
+    .nav-menu {
+        font-size: 1rem;
+    }
+    .btn, .btn-primary, .btn-secondary {
+        font-size: 1rem;
+        padding: 10px 16px;
+    }
+    .footer-links a {
+        margin: 0 5px;
     }
 }
