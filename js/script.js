@@ -170,10 +170,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
+            document.getElementById('reply_to').value = email;
             
-            if (name && email && subject && message) {
+            if (name && email && message) {
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalBtnText = submitBtn.textContent;
                 submitBtn.classList.add('sending');
@@ -183,8 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     name: name,
                     email: email,
                     message: message,
-                    subject: subject,
-                    to_email: 'paraspawar.dev@outlook.com'
+                    reply_to: email
                 };
                 
                 console.log('Attempting to send email with params:', templateParams);
@@ -204,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 console.log('Email sent successfully:', response);
                                 alert('Thank you for your message! I will get back to you soon.');
                                 contactForm.reset();
-                                submitBtn.classList.remove('sending');
+                                usubmitBtn.classList.remove('sending');
                                 submitBtn.disabled = false;
                             })
                             .catch(function(error) {
