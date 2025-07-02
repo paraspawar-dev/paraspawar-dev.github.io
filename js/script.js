@@ -171,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
+            const title = name;
             document.getElementById('reply_to').value = email;
             
             if (name && email && message) {
@@ -184,27 +185,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     email: email,
                     message: message,
                     reply_to: email,
-                    time: new Date().toLocaleString()
+                    time: new Date().toLocaleString(),
+                    title: title
                 };
                 
                 console.log('Attempting to send email with params:', templateParams);
-                console.log('Using service_id:', 'service_42d4u9c');
-                console.log('Using template_id:', 'template_ccklg0u');
+                console.log('Using service_id:', 'service_uvht774');
+                console.log('Using template_id:', 'template_7x7zhsh');
                 
                 const sendEmail = () => {
                     try {
                         console.log('About to call emailjs.send with:', {
-                            service_id: 'service_42d4u9c',
-                            template_id: 'template_ccklg0u',
+                            service_id: 'service_uvht774',
+                            template_id: 'template_7x7zhsh',
                             template_params: templateParams
                         });
                         
-                        emailjs.send('service_42d4u9c', 'template_ccklg0u', templateParams)
+                        emailjs.send('service_uvht774', 'template_7x7zhsh', templateParams)
                             .then(function(response) {
                                 console.log('Email sent successfully:', response);
                                 alert('Thank you for your message! I will get back to you soon.');
                                 contactForm.reset();
-                                usubmitBtn.classList.remove('sending');
+                                submitBtn.classList.remove('sending');
                                 submitBtn.disabled = false;
                             })
                             .catch(function(error) {
