@@ -405,10 +405,10 @@
     <script src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
     <script>
         const templateParams = {
-            name: name,
-            email: email,
-            message: message,
-            reply_to: email
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value,
+            // time: new Date().toLocaleString() // if you want to include time
         };
     </script>
     <script>

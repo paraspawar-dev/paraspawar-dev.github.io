@@ -183,7 +183,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     name: name,
                     email: email,
                     message: message,
-                    reply_to: email
+                    reply_to: email,
+                    time: new Date().toLocaleString()
                 };
                 
                 console.log('Attempting to send email with params:', templateParams);
