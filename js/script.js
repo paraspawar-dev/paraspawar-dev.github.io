@@ -7,49 +7,103 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
     const contactForm = document.getElementById('contactForm');
-    const progressBars = document.querySelectorAll('.progress-bar');
-    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+    const formMessage = document.getElementById('form-message'); // Get message container
 
+    // Function to display messages
+    function showMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.className = `form-message show ${type}`;
+
+        setTimeout(() => {
+            formMessage.classList.remove('show');
+        }, 5000); // Message disappears after 5 seconds
+    }
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    const heroContent = document.querySelector('.hero-content');
+
+    // Initialize EmailJS
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init("H7sGal-pxNT9TGaXT");
+        console.log('EmailJS initialized successfully');
+    } else {
+        console.error('EmailJS library not loaded');
+    }
+
+    // Animate Hero Content on Load
+    if (heroContent) {
+        setTimeout(() => {
+            heroContent.classList.add('visible');
+        }, 100); // Small delay to ensure transition is applied
+    }
+
+    // Menu Toggle
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             document.body.classList.toggle('no-scroll');
             this.classList.toggle('active');
-
-            const hamburger = this.querySelector('.hamburger');
-            if (hamburger.classList.contains('active')) {
-                hamburger.classList.remove('active');
-            } else {
-                hamburger.classList.add('active');
-            }
         });
     }
 
+    // Close menu on link click
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
             document.body.classList.remove('no-scroll');
-            menuToggle.classList.remove('active');
-            menuToggle.querySelector('.hamburger').classList.remove('active');
+            if (menuToggle) {
+                menuToggle.classList.remove('active');
+            }
         });
     });
 
-    window.addEventListener('scroll', function() {
+    // Scroll animations and navbar effects
+    const handleScroll = () => {
+        // Navbar
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
 
+        // Back to top button
         if (window.scrollY > 500) {
             backToTopButton.classList.add('active');
         } else {
             backToTopButton.classList.remove('active');
         }
 
-        animateOnScroll();
-    });
+        // Animate elements on scroll
+        animateElements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (elementPosition < windowHeight - 50) {
+                element.classList.add('show');
+            }
+        });
 
+        // Active nav link
+        let current = '';
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             if (this.getAttribute('href') !== '#') {
@@ -66,193 +120,180 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    window.addEventListener('scroll', function() {
-        let current = '';
-        const sections = document.querySelectorAll('section');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - 100) {
-                current = section.getAttribute('id');
-            }
-        });
+    // Project filtering (removed as per previous professionalization)
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
+    // GA4 Event: Project Clicks
+    const projectLinks = document.querySelectorAll('.project-links a');
+    projectLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const projectCard = this.closest('.project-card');
+            const projectTitle = projectCard ? projectCard.querySelector('.project-title').textContent : 'Unknown Project';
+            const linkType = this.textContent.trim(); // e.g., 'Live Demo', 'Source Code'
 
-    if (filterButtons.length > 0) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                const filterValue = this.getAttribute('data-filter');
-                
-                projectCards.forEach(card => {
-                    if (filterValue === 'all') {
-                        card.style.display = 'block';
-                    } else if (card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                    
-                    setTimeout(() => {
-                        card.classList.add('show');
-                    }, 100);
+            if (typeof gtag === 'function') {
+                gtag('event', 'project_click', {
+                    'event_category': 'engagement',
+                    'event_label': `${projectTitle} - ${linkType}`,
+                    'project_name': projectTitle,
+                    'link_type': linkType
                 });
-            });
-        });
-    }
-
-    function loadEmailJSScript() {
-        return new Promise((resolve, reject) => {
-            if (typeof emailjs !== 'undefined') {
-                console.log('EmailJS already loaded');
-                resolve();
-                return;
             }
-            
-            console.log('Dynamically loading EmailJS script');
-            const script = document.createElement('script');
-            script.src = 'https://cdn.emailjs.com/sdk/2.6.4/email.min.js';
-            script.onload = () => {
-                console.log('EmailJS script loaded successfully');
-                resolve();
-            };
-            script.onerror = (error) => {
-                console.error('Failed to load EmailJS script:', error);
-                reject(error);
-            };
-            document.head.appendChild(script);
         });
-    }
-    
-    let emailJSInitialized = false;
-    
-    function initializeEmailJS() {
-        return loadEmailJSScript()
-            .then(() => {
-                if (typeof emailjs !== 'undefined') {
-                    try {
-                        emailjs.init("H7sGal-pxNT9TGaXT");
-                        console.log('EmailJS initialized successfully');
-                        emailJSInitialized = true;
-                        return true;
-                    } catch (error) {
-                        console.error('EmailJS initialization failed:', error);
-                        return false;
-                    }
-                } else {
-                    console.error('EmailJS library is still not available after loading');
-                    return false;
-                }
-            })
-            .catch(error => {
-                console.error('Error during EmailJS initialization:', error);
-                return false;
-            });
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        initializeEmailJS();
     });
 
+    // GA4 Event: Social Media Clicks
+    const socialIcons = document.querySelectorAll('.social-icon');
+    socialIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            const platform = this.getAttribute('aria-label') || 'Unknown';
+            const url = this.getAttribute('href') || 'Unknown';
+
+            if (typeof gtag === 'function') {
+                gtag('event', 'social_media_click', {
+                    'event_category': 'engagement',
+                    'event_label': `Social Click: ${platform}`,
+                    'social_platform': platform,
+                    'social_url': url
+                });
+            }
+        });
+    });
+
+    // GA4 Event: CV Download Click
+    const cvDownloadButton = document.querySelector('a[href="#"].btn-primary'); // Assuming this is your CV download button
+    if (cvDownloadButton) {
+        cvDownloadButton.addEventListener('click', function() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'cv_download', {
+                    'event_category': 'engagement',
+                    'event_label': 'CV Downloaded'
+                });
+            }
+        });
+    }
+
+    // GA4 Event: Scroll Depth Tracking
+    let scrollDepthsTracked = {};
+    window.addEventListener('scroll', function() {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        const scrollPercentage = (scrolled / scrollHeight) * 100;
+
+        const thresholds = [25, 50, 75, 100];
+
+        thresholds.forEach(threshold => {
+            if (scrollPercentage >= threshold && !scrollDepthsTracked[threshold]) {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'scroll_depth', {
+                        'event_category': 'engagement',
+                        'event_label': `Scrolled ${threshold}%`,
+                        'scroll_percentage': threshold
+                    });
+                }
+                scrollDepthsTracked[threshold] = true;
+            }
+        });
+    });
+
+    // GA4 Event: Section Visibility Tracking
+    const sections = document.querySelectorAll('section');
+    const observedSections = new Set();
+
+    const observerOptions = {
+        root: null, // relative to the viewport
+        rootMargin: '0px',
+        threshold: 0.5 // 50% of the section must be visible
+    };
+
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                if (sectionId && !observedSections.has(sectionId)) {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'section_view', {
+                            'event_category': 'engagement',
+                            'event_label': `Viewed Section: ${sectionId}`,
+                            'section_id': sectionId
+                        });
+                    }
+                    observedSections.add(sectionId);
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // Contact Form
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value; // Get subject value
             const message = document.getElementById('message').value;
-            const title = name;
-            document.getElementById('reply_to').value = email;
             
-            if (name && email && message) {
+            // Validate email before proceeding
+            if (!emailInput.validity.valid) {
+                emailInput.focus(); // Focus on the invalid field
+                emailInput.dispatchEvent(new Event('input')); // Trigger validation message
+                showMessage('Please ensure all fields are filled correctly, especially the email address.', 'error');
+                return;
+            }
+
+            if (name && email && subject && message) {
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalBtnText = submitBtn.textContent;
-                submitBtn.classList.add('sending');
+                submitBtn.textContent = 'Sending...';
                 submitBtn.disabled = true;
                 
                 const templateParams = {
                     name: name,
                     email: email,
+                    subject: subject, // Use the subject from the form
                     message: message,
-                    reply_to: email,
-                    time: new Date().toLocaleString(),
-                    title: title
+                    reply_to: email
                 };
                 
-                console.log('Attempting to send email with params:', templateParams);
-                console.log('Using service_id:', 'service_uvht774');
-                console.log('Using template_id:', 'template_7x7zhsh');
-                
-                const sendEmail = () => {
-                    try {
-                        console.log('About to call emailjs.send with:', {
-                            service_id: 'service_uvht774',
-                            template_id: 'template_7x7zhsh',
-                            template_params: templateParams
-                        });
-                        
-                        emailjs.send('service_uvht774', 'template_7x7zhsh', templateParams)
-                            .then(function(response) {
-                                console.log('Email sent successfully:', response);
-                                alert('Thank you for your message! I will get back to you soon.');
-                                contactForm.reset();
-                                submitBtn.classList.remove('sending');
-                                submitBtn.disabled = false;
-                            })
-                            .catch(function(error) {
-                                console.error('Email sending failed:', error);
-                                alert('Sorry, there was an error sending your message. Please try again later. Error: ' + (error.text || 'Unknown error'));
-                                submitBtn.classList.remove('sending');
-                                submitBtn.disabled = false;
-                            });
-                    } catch (e) {
-                        console.error('Exception when trying to send email:', e);
-                        alert('Sorry, there was an error sending your message. Please try again later.');
-                        submitBtn.classList.remove('sending');
-                        submitBtn.disabled = false;
-                    }
-                };
-                
-                if (typeof emailjs === 'undefined' || !emailJSInitialized) {
-                    console.log('EmailJS not initialized yet, attempting to initialize...');
-                    initializeEmailJS()
-                        .then(success => {
-                            if (success) {
-                                console.log('EmailJS initialized successfully, now sending email');
-                                sendEmail();
-                            } else {
-                                console.error('Failed to initialize EmailJS');
-                                alert('Sorry, the email service is not available. Please try again later or contact directly at paraspawar.dev@outlook.com');
-                                submitBtn.classList.remove('sending');
-                                submitBtn.disabled = false;
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error initializing EmailJS:', error);
-                            alert('Sorry, the email service is not available. Please try again later or contact directly at paraspawar.dev@outlook.com');
-                            submitBtn.classList.remove('sending');
-                            submitBtn.disabled = false;
-                        });
-                } else {
-                    console.log('EmailJS already initialized, sending email directly');
-                    sendEmail();
+                if (typeof emailjs === 'undefined') {
+                    showMessage('Sorry, the email service is not available. Please try again later or contact directly at paraspawar.dev@outlook.com', 'error');
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                    return;
                 }
+
+                emailjs.send('service_42d4u9c', 'template_7x7zhsh', templateParams)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        showMessage('Thank you for your message! I will get back to you soon.', 'success');
+                        contactForm.reset();
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                        // GA4 Event: Contact Form Submission
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'contact_form_submit', {
+                                'event_category': 'engagement',
+                                'event_label': 'Contact Form Sent',
+                                'form_name': 'main_contact_form'
+                            });
+                        }
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                        showMessage('Sorry, there was an error sending your message. Please try again later. Error: ' + (error.text || 'Unknown error'), 'error');
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    });
             } else {
-                alert('Please fill in all fields.');
+                showMessage('Please fill in all fields.', 'error');
             }
         });
     }
 
+    // Animate progress bars on load
     function animateProgressBars() {
         progressBars.forEach(bar => {
             const width = bar.getAttribute('data-width');
@@ -260,70 +301,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function animateOnScroll() {
-        requestAnimationFrame(() => {
-            animateElements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementPosition < windowHeight - 50) {
-                    element.classList.add('show');
-                }
-            });
-        });
-    }
-
+    // Initial animations on page load
     window.addEventListener('load', () => {
         setTimeout(() => {
             animateProgressBars();
-            animateOnScroll();
+            handleScroll(); // Run once on load
         }, 300);
     });
 
-    function debounce(func, wait = 10, immediate = true) {
-        let timeout;
-        return function() {
-            const context = this, args = arguments;
-            const later = function() {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-            };
-            const callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func.apply(context, args);
-        };
-    };
-
-    window.addEventListener('scroll', debounce(function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        if (window.scrollY > 500) {
-            backToTopButton.classList.add('active');
-        } else {
-            backToTopButton.classList.remove('active');
-        }
-
-        animateOnScroll();
-    }));
-
-    const typingElement = document.querySelector('.hero-content h1 span');
-    if (typingElement) {
-        const text = typingElement.textContent;
-        typingElement.textContent = '';
-        
-        let i = 0;
-        const typingInterval = setInterval(() => {
-            if (i < text.length) {
-                typingElement.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(typingInterval);
-            }
-        }, 100);
-    }
 });
+
+// Global error handler
+window.onerror = function(message, source, lineno, colno, error) {
+    console.error('Global error caught:', message, 'at', source, lineno, colno, error);
+    return false;
+};
