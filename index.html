@@ -4,22 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paras Pawar - Portfolio</title>
+
+    <!-- Primary CSS Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts (Poppins) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Meta Description for SEO -->
     <meta name="description" content="Paras Pawar's portfolio. Web developer and designer creating beautiful, functional, and responsive websites.">
+
+    <!-- Favicon -->
     <link rel="icon" href="img/profile.svg" type="image/svg+xml">
-    <!-- Open Graph Meta Tags -->
+
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
     <meta property="og:title" content="Paras Pawar - Portfolio">
     <meta property="og:description" content="Web developer and designer creating beautiful, functional, and responsive websites.">
     <meta property="og:image" content="https://yourdomain.com/img/Profile.jpeg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yourdomain.com/">
     
+    <!-- Google Analytics 4 (GA4) Tracking Code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3X2J1TPPB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-D3X2J1TPPB');
+    </script>
+
     <!-- EmailJS will be loaded dynamically by script.js -->
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- ==================== Navigation Bar ==================== -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
@@ -38,7 +59,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ==================== Hero Section ==================== -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -66,7 +87,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ==================== About Section ==================== -->
     <section id="about" class="about section">
         <div class="container">
             <div class="section-header">
@@ -118,185 +139,108 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- ==================== Skills Section ==================== -->
     <section id="skills" class="skills section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">My Skills</h2>
+                <h2 class="section-title">My Technical Skills</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="skills-content">
-                <div class="skills-text animate-on-scroll">
-                    <h3>What I'm capable of</h3>
-                    <p>I specialize in building modern, responsive websites using the latest technologies. My expertise spans front-end development, allowing me to create product you want.</p>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fab fa-html5"></i>
-                        </div>
-                        <h3>HTML5</h3>
-                        <div class="skill-progress">
-                            <div class="progress-bar" data-width="98"></div>
-                            <span>98%</span>
-                        </div>
+            <div class="skills-content animate-on-scroll">
+                <p class="skills-intro">I'm proficient in the core technologies of the modern web. My skills are not just theoretical; they are proven through the projects I've built. I am always learning and expanding my toolkit.</p>
+                <div class="skill-categories">
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>JavaScript (ES6+)</li>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                        </ul>
                     </div>
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-                        <h3>CSS3</h3>
-                        <div class="skill-progress">
-                            <div class="progress-bar" data-width="98"></div>
-                            <span>98%</span>
-                        </div>
+                    <div class="skill-category">
+                        <h3>Frameworks & Libraries</h3>
+                        <ul>
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>Express</li>
+                        </ul>
                     </div>
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fab fa-js"></i>
-                        </div>
-                        <h3>JavaScript</h3>
-                        <div class="skill-progress">
-                            <div class="progress-bar" data-width="95"></div>
-                            <span>95%</span>
-                        </div>
-                    </div>
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fab fa-react"></i>
-                        </div>
-                        <h3>React</h3>
-                        <div class="skill-progress">
-                            <div class="progress-bar" data-width="10"></div>
-                            <span>10%</span>
-                        </div>
-                    </div>
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fab fa-node-js"></i>
-                        </div>
-                        <h3>Node.js</h3>
-                        <div class="skill-progress">
-                            <div class="progress-bar" data-width="10"></div>
-                            <span>10%</span>
-                        </div>
-                    </div>
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3>MongoDB</h3>
-                        <div class="skill-progress">
-                            <div class="progress-bar" data-width="3"></div>
-                            <span>3%</span>
-                        </div>
+                    <div class="skill-category">
+                        <h3>Tools & Platforms</h3>
+                        <ul>
+                            <li>Git & GitHub</li>
+                            <li>MongoDB</li>
+                            <li>VS Code</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- ==================== Projects Section ==================== -->
     <section id="projects" class="projects section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">My Projects</h2>
+                <h2 class="section-title">My Work</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="projects-filter animate-on-scroll">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Design</button>
-                <button class="filter-btn" data-filter="app">App Development <span style="font-size: 0.8em; color: var(--primary-color);">(Learning)</span></button>
-                <button class="filter-btn" data-filter="other">Other</button>
-            </div>
             <div class="projects-grid">
-                <div class="project-card animate-on-scroll" data-category="web">
+                <!-- Project 1: E-Commerce Website -->
+                <div class="project-card animate-on-scroll">
                     <div class="project-image">
-                        <img src="img/shoping.jpg" alt="Project 1">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>E-Commerce Website</h3>
-                                <p>A fully responsive e-commerce platform with payment integration.</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
+                        <img src="img/shoping.jpg" alt="E-Commerce Website">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-description">A fully responsive e-commerce front-end. My role was to design and build the user interface and implement the complete shopping cart and checkout experience.</p>
+                        <ul class="project-tech-list">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                            <a href="#" class="btn btn-secondary">Source Code</a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card animate-on-scroll" data-category="app">
+
+                <!-- Project 2: Task Management App -->
+                <div class="project-card animate-on-scroll">
                     <div class="project-image">
-                        <img src="img/project2.svg" alt="Project 2">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Task Management App</h3>
-                                <p>A React-based task management application with drag-and-drop functionality.</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
+                        <img src="img/project2.svg" alt="Task Management App">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management App</h3>
+                        <p class="project-description">A concept for a React-based task management application. This was a learning project to understand state management and component-based architecture.</p>
+                        <ul class="project-tech-list">
+                            <li>React</li>
+                            <li>CSS</li>
+                            <li>(Learning Project)</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-secondary disabled">Live Demo</a>
+                            <a href="#" class="btn btn-secondary">Source Code</a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card animate-on-scroll" data-category="web">
+
+                <!-- Project 3: Portfolio Website -->
+                <div class="project-card animate-on-scroll">
                     <div class="project-image">
-                        <img src="img/port.jpg" alt="Project 3">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Portfolio Website</h3>
-                                <p>A modern portfolio website showcasing creative work and skills.</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="img/port.jpg" alt="Portfolio Website">
                     </div>
-                </div>
-                <div class="project-card animate-on-scroll" data-category="other">
-                    <div class="project-image">
-                        <img src="img/project4.svg" alt="Project 4">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Weather Dashboard</h3>
-                                <p>A weather application that displays current and forecasted weather data.</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card animate-on-scroll" data-category="app">
-                    <div class="project-image">
-                        <img src="img/project5.svg" alt="Project 5">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Fitness Tracker</h3>
-                                <p>A mobile-first application for tracking workouts and fitness progress.</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card animate-on-scroll" data-category="web">
-                    <div class="project-image">
-                        <img src="img/blog.jpg" alt="Project 6">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Blog Platform</h3>
-                                <p>A full-stack blog platform with user authentication and content management.</p>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
+                    <div class="project-content">
+                        <h3 class="project-title">This Portfolio</h3>
+                        <p class="project-description">The website you are on right now. Designed and built from scratch to showcase my skills in front-end development and modern, responsive design.</p>
+                        <ul class="project-tech-list">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-secondary">Source Code</a>
                         </div>
                     </div>
                 </div>
@@ -304,7 +248,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ==================== Contact Section ==================== -->
     <section id="contact" class="contact section">
         <div class="container">
             <div class="section-header">
@@ -351,7 +295,11 @@
                             <input type="text" id="name" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                            <div class="error-message" id="email-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
                         </div>
                         <div class="form-group">
                             <textarea id="message" name="message" placeholder="Your Message" required></textarea>
@@ -359,12 +307,13 @@
                         <input type="hidden" id="reply_to" name="reply_to">
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
+                    <div id="form-message" class="form-message"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ==================== Footer ==================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -380,7 +329,8 @@
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
-    <!-- Global error handler -->
+    <!-- ==================== JavaScript Files ==================== -->
+    <!-- Global error handler (for debugging) -->
     <script>
         window.onerror = function(message, source, lineno, colno, error) {
             console.error('Global error caught:', message, 'at', source, lineno, colno, error);
@@ -388,9 +338,14 @@
         };
     </script>
     
-    <!-- EmailJS Verification -->
+    <!-- EmailJS SDK (loaded from CDN) -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Main JavaScript File -->
+    <script src="js/script.js" defer></script>
+
+    <!-- Inline script for EmailJS verification (optional, for debugging) -->
     <script>
-        // Verify EmailJS is loaded
         document.addEventListener('DOMContentLoaded', function() {
             if (window.emailjs) {
                 console.log('EmailJS library loaded successfully');
@@ -398,21 +353,6 @@
                 console.error('EmailJS library failed to load');
             }
         });
-    </script>
-    
-    <!-- JavaScript -->
-    <script src="js/script.js" defer></script>
-    <script src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
-    <script>
-        const templateParams = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value,
-            // time: new Date().toLocaleString() // if you want to include time
-        };
-    </script>
-    <script>
-        emailjs.send('service_42d4u9c', 'template_ccklg0u', templateParams)
     </script>
 </body>
 </html>
